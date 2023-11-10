@@ -1,17 +1,17 @@
-import express from "express"
-import {body} from "express-validator"
-import favoriteController from "../controllers/favorite.controller.js"
-import userController from "../controllers/user.controller.js"
-import requestHandler from "../handlers/request.handler.js"
-import userModel from "../models/user.model"
-import tokenMiddleware from "../middlewares/token.middleware.js"
+import express from "express";
+import {body} from "express-validator";
+import favoriteController from "../controllers/favorite.controller.js";
+import userController from "../controllers/user.controller.js";
+import requestHandler from "../handlers/request.handler.js";
+import userModel from "../models/user.model";
+import tokenMiddleware from "../middlewares/token.middleware.js";
 
 const router = express.Router()
 
 router.post (
     "/signup",
     body("username")
-    .exists().withMessage("password is required")
+    .exists().withMessage("username is required")
     .isLength({ min: 8}).withMessage("username minimum 8 characters")
     .custom(async value => {
         const user = await userModel.findOne({ username: value })
@@ -93,6 +93,7 @@ router.post(
         .exists().withMessage("mediaPoster is required"),
         body("mediaRate")
         .exists().withMessage("mediaRate is required"),
+        requestHandler.validate,
         favoriteController.addFavorite
     );
 
