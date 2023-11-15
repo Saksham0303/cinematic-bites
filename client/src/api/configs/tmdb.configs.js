@@ -23,3 +23,5 @@ const tmdbConfigs = {
 }
 
 export default tmdbConfigs;
+
+
