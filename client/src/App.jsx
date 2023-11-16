@@ -18,6 +18,7 @@ const App = () => {
       closeOnClick
       pauseOnFocusLoss
       pauseOnHover
+      theme={themeMode}
       />
       {/* mui reset css */}
       <CssBaseline/>

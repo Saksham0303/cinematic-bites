@@ -8,3 +8,5 @@ const getUrl = (endpoint, params) => {
 };
 
 export default { getUrl };
+
+
